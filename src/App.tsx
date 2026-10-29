@@ -71,19 +71,15 @@ function TextLink(props: { to: Page; children: ReactNode; light?: boolean }) {
     </a>
   )
 }
+
 function DemoLink() {
   return (
-    <a
-      className="demo-link"
-      href={CONDE_DEMO_URL}
-      target="_blank"
-      rel="noreferrer"
-    >
-      ¡Visualiza el demo! <Arrow />
+    <a className="action-link" href={CONDE_DEMO_URL} target="_blank" rel="noreferrer">
+      <span>Probar módulo</span>
+      <Arrow />
     </a>
   )
 }
-
 function ExternalLink({
   href,
   children,
