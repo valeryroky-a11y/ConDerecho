@@ -4,8 +4,12 @@ import tailwindcss from '@tailwindcss/vite'
 import fs from 'node:fs'
 import path from 'node:path'
 
-import siteConfiguration from './.figma/make/site.json'
-
+   const siteConfiguration = {
+     title: 'ConDerecho',
+     description: 'Divulgación y proyectos comunitarios para promover el conocimiento de los derechos y una ciudadanía más informada.',
+     language: 'es',
+     accessibility: { addBypassLinks: true },
+   }
 
 // Vite config — https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
