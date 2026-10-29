@@ -60,13 +60,21 @@ function SocialIcon({ type }: { type: "instagram" | "youtube" }) {
   )
 }
 
-function TextLink(props: { to: Page; children: ReactNode; light?: boolean }) {
+function TextLink({
+  to,
+  children,
+  light = false,
+}: {
+  to: Page
+  children: ReactNode
+  light?: boolean
+}) {
   return (
     <a
-      className={`text-link${props.light ? " text-link--light" : ""}`}
-      href={`#/${props.to}`}
+      className={`text-link${light ? " text-link--light" : ""}`}
+      href={`#/${to}`}
     >
-      <span>{props.children}</span>
+      <span>{children}</span>
       <Arrow />
     </a>
   )
@@ -74,12 +82,17 @@ function TextLink(props: { to: Page; children: ReactNode; light?: boolean }) {
 
 function DemoLink() {
   return (
-    <a className="action-link" href={CONDE_DEMO_URL} target="_blank" rel="noreferrer">
-      <span>Probar módulo</span>
-      <Arrow />
+    <a
+      className="demo-link"
+      href={CONDE_DEMO_URL}
+      target="_blank"
+      rel="noreferrer"
+    >
+      ¡Visualiza el demo! <Arrow />
     </a>
   )
 }
+
 function ExternalLink({
   href,
   children,
@@ -164,110 +177,34 @@ function OfficialBrandMark() {
     </div>
   )
 }
-function ProjectsPage() {
-  return (
-    <>
-      <PageHero
-        kicker="ConDerecho — Proyectos"
-        title={<>Ideas que convierten el conocimiento en acción.</>}
-        intro="Nuestras iniciativas responden a distintos contextos y formas de aprender. Todas comparten una misión: hacer el conocimiento jurídico más cercano."
-        aside="Digital · Audiovisual · Comunitario"
-      />
-      <section className="project-features">
-        {projectData.map((project) => (
-          <article className="project-feature" key={project.number}>
-            <div
-              className={`feature-image feature-art feature-art--${project.motif}`}
-            >
-              {project.number === "01" ? (
-                <img
-                  src="/projects/con_derecho-learning.png"
-                  alt="Composición visual para Educación Digital de ConDerecho"
-                />
-              ) : project.number === "02" ? (
-                <img
-                  src="/projects/via-conde-comunidad2.jpg"
-                  alt="Composición visual para Via Conde Comunidad"
-                />
-              ) : project.number === "03" ? (
-                <img
-                  src="/projects/conderecho-podcast.jpg"
-                  alt="Integrante de ConDerecho durante una grabación de contenido"
-                />
-              ) : (
-                <div
-                  role="img"
-                  aria-label={`Composición editorial para ${project.name}`}
-                >
-                  <ProjectMotif type={project.motif} />
-                </div>
-              )}
-              <span>{project.number}</span>
-            </div>
-            <div className="feature-content">
-              <div className="feature-meta">
-                <p>{project.name}</p>
-                <span>Proyecto {project.number}</span>
-              </div>
-              <h2>{project.title}</h2>
-              <p className="feature-copy">{project.copy}</p>
-              <p className="feature-complement">{project.complement}</p>
-              {project.number === "01" && (
-                <div className="pilot-module">
-                  <div>
-                    <span>Módulo piloto previsto</span>
-                    <h3>La letra chiquita</h3>
-                    <p>20 lecciones previstas</p>
-                  </div>
-                  <ul>
-                    {[
-                      "Contratos",
-                      "Despidos",
-                      "Finiquitos",
-                      "Compras a crédito",
-                      "Deudas",
-                      "Informalidad laboral",
-                    ].map((topic) => (
-                      <li key={topic}>{topic}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {project.number === "03" && (
-                <div className="podcast-launch">
-                  <p className="project-status">
-                    Próximamente · Estreno: 1 de diciembre de 2026
-                  </p>
-                  <strong>Un nuevo episodio cada semana</strong>
-                  <p>
-                    Muy pronto, nuevas conversaciones para conocer, cuestionar y
-                    ejercer nuestros derechos.
-                  </p>
-                </div>
-              )}
-              {project.number === "01" && <DemoLink />}
-              {project.number === "02" && (
-                <a className="action-link action-link--dark" href="#/viaconde">
-                  <span>{project.label}</span>
-                  <Arrow />
-                </a>
-              )}
-              {project.number === "03" && (
-                <ExternalLink href={YOUTUBE_URL}>{project.label}</ExternalLink>
-              )}
-            </div>
-          </article>
+
+function ProjectMotif({
+  type,
+}: {
+  type: "learning" | "community" | "podcast"
+}) {
+  if (type === "learning") {
+    return (
+      <div className="project-motif learning-motif" aria-hidden="true">
+        <span>Educación digital</span>
+        <strong>Conocimiento en módulos breves</strong>
+        <i />
+        <i />
+        <i />
+      </div>
+    )
+  }
+
+  if (type === "podcast") {
+    return (
+      <div className="project-motif podcast-motif" aria-hidden="true">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <i key={index} />
         ))}
-      </section>
-      <section className="closing-cta">
-        <p>Conocer para ejercer.</p>
-        <h2>Un ecosistema educativo para acercar el Derecho.</h2>
-        <TextLink to="colabora" light>
-          Colabora con la misión
-        </TextLink>
-      </section>
-    </>
-  );
+        <span>ConDerecho / al aire</span>
+      </div>
+    )
+  }
 
   return (
     <div className="project-motif community-motif" aria-hidden="true">
