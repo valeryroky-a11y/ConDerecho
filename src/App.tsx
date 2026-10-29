@@ -177,7 +177,6 @@ function OfficialBrandMark() {
     </div>
   )
 }
-
 function ProjectsPage() {
   return (
     <>
@@ -281,9 +280,8 @@ function ProjectsPage() {
         </TextLink>
       </section>
     </>
-  )
+  );
 }
-
   return (
     <div className="project-motif community-motif" aria-hidden="true">
       <i />
