@@ -268,7 +268,7 @@ function ProjectsPage() {
       </section>
     </>
   );
-}
+
   return (
     <div className="project-motif community-motif" aria-hidden="true">
       <i />
@@ -277,6 +277,7 @@ function ProjectsPage() {
       <span>Escuchar · compartir · orientar</span>
     </div>
   )
+}
 
 function Header({ page }: { page: Page }) {
   const [open, setOpen] = useState(false)
