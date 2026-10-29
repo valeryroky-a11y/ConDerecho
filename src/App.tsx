@@ -60,26 +60,17 @@ function SocialIcon({ type }: { type: "instagram" | "youtube" }) {
   )
 }
 
-function TextLink({
-  to,
-  children,
-  light = false,
-}: {
-  to: Page
-  children: ReactNode
-  light?: boolean
-}) {
+function TextLink(props: { to: Page; children: ReactNode; light?: boolean }) {
   return (
     <a
-      className={`text-link${light ? " text-link--light" : ""}`}
-      href={`#/${to}`}
+      className={`text-link${props.light ? " text-link--light" : ""}`}
+      href={`#/${props.to}`}
     >
-      <span>{children}</span>
+      <span>{props.children}</span>
       <Arrow />
     </a>
   )
 }
-
 function DemoLink() {
   return (
     <a
