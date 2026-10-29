@@ -281,7 +281,6 @@ function ProjectsPage() {
       <span>Escuchar · compartir · orientar</span>
     </div>
   )
-}
 
 function Header({ page }: { page: Page }) {
   const [open, setOpen] = useState(false)
