@@ -774,6 +774,21 @@ const projectData = [
   },
 ]
 
+const projectImages: Record<string, { src: string; alt: string }> = {
+  "01": {
+    src: "/projects/con_derecho-learning.png",
+    alt: "Plataforma de aprendizaje jurídico de ConDerecho",
+  },
+  "02": {
+    src: "/projects/via-conde-comunidad2.jpg",
+    alt: "Brigada comunitaria de Vía ConDe con la comunidad",
+  },
+  "03": {
+    src: "/projects/conderecho-podcast.jpg",
+    alt: "Integrante de ConDerecho durante una grabación de contenido",
+  },
+}
+
 function ProjectsPage() {
   return (
     <>
@@ -789,12 +804,12 @@ function ProjectsPage() {
             <div
               className={`feature-image feature-art feature-art--${project.motif}`}
             >
-              {project.number === "03" ? (
-                <img
-                  src="/projects/conderecho-podcast.jpg"
-                  alt="Integrante de ConDerecho durante una grabación de contenido"
-                />
-              ) : (
+              {projectImages[project.number] ? (
+  <img
+    src={projectImages[project.number].src}
+    alt={projectImages[project.number].alt}
+  />
+) : (
                 <div
                   role="img"
                   aria-label={`Composición editorial para ${project.name}`}
